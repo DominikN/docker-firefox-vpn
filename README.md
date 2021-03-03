@@ -46,7 +46,7 @@ xhost local:root
 <!-- minimal: sudo docker run --rm -it --net=host --env DISPLAY firefox -->
 
 ```bash
-sudo docker run --rm -it \
+sudo docker run --rm -it
 --env-file ./.env \
 --env DISPLAY \
 --volume /tmp/.X11-unix:/tmp/.X11-unix:rw \
@@ -64,7 +64,6 @@ firefox-vpn
 xhost +localhost
 ```
 
-
 ```bash
 sudo docker run --rm -it \
 --env-file ./.env \
@@ -74,4 +73,29 @@ sudo docker run --rm -it \
 --cap-add NET_ADMIN \
 --sysctl net.ipv6.conf.all.disable_ipv6=0 \
 firefox-vpn
+```
+
+### Windows 10
+
+P2P connection is probably not possible yet: https://docs.docker.com/docker-for-windows/networking/ . No bridged network adapter from windows is possible.
+
+But maybe... (l2bridge)
+https://techcommunity.microsoft.com/t5/networking-blog/l2bridge-container-networking/ba-p/1180923
+
+
+
+1. 
+
+```bash
+choco install vcxsrv
+```
+
+2. 
+
+Run **Xlaunch** from a **[Start]** menu
+
+3. 
+
+```bash
+docker run --rm -it --env-file ./.env --env DISPLAY=host.docker.internal:0 --volume my-container-1-v:/var/lib/husarnet --device /dev/net/tun --cap-add NET_ADMIN --sysctl net.ipv6.conf.all.disable_ipv6=0 firefox-vpn
 ```
