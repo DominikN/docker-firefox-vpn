@@ -1,5 +1,5 @@
-# docker-chrome-vpn
-A docker container providing a Google Chrome with a Husarnet VPN Client to access Husarnet powered devices from a web browser without installing Husarnet Client on your host system.
+# docker-firefox-vpn
+A docker container providing a Firefox with a Husarnet VPN Client to access Husarnet powered devices from a web browser without installing Husarnet Client on your host system.
 
 Tested on host system:
 ```
@@ -27,9 +27,6 @@ Then build an image:
 ```bash
 sudo docker build -t firefox-vpn .
 ```
-
-
-
 
 ## Start a container
 
